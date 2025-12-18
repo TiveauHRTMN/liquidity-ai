@@ -50,7 +50,7 @@ const UploadView = ({ onUpload }) => {
                     className="text-center mb-8"
                 >
                     <div className="flex items-center justify-center gap-3 mb-4">
-                        <AlertTriangle className="w-8 h-8 text-red-400" />
+                        <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
                         <h1 className="text-3xl font-bold text-white">
                             Liquidity <span className="neon-text-gradient">AI</span>
                         </h1>
