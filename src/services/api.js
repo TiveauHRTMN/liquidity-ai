@@ -1,9 +1,9 @@
 /**
  * API Service - Handles all communication with the FastAPI backend
- * Uses environment variable for API URL with fallback
+ * Uses environment variable for API URL with fallback to production Render URL
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://liquidity-ai-backend.onrender.com';
 
 /**
  * Upload documents to the backend
