@@ -51,7 +51,7 @@ const UploadView = ({ onUpload }) => {
                 >
                     <img src="/logo.png" alt="Liquidity AI" className="h-12 w-auto mx-auto mb-4" />
                     <h2 className="text-2xl font-light text-white/90 tracking-wide mb-6">
-                        Your Money. Found.
+                        Claim What's Already Yours.
                     </h2>
                     <p className="text-white/50">
                         Upload your financial documents to uncover hidden capital

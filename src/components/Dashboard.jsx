@@ -90,7 +90,7 @@ const Dashboard = ({
                 >
                     <div className="flex items-center gap-4">
                         <img src="/logo.png" alt="Liquidity AI" className="h-10 w-auto" />
-                        <p className="text-white/50 text-sm hidden sm:block">Your Money. Found.</p>
+                        <p className="text-white/50 text-sm hidden sm:block">Claim What's Already Yours.</p>
                     </div>
 
                     {/* Header Actions */}

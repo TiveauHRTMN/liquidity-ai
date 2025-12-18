@@ -50,7 +50,7 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
                 {/* Header with Logo */}
                 <div className="mb-6">
                     <img src="/logo.png" alt="Liquidity AI" className="h-10 w-auto mx-auto mb-3" />
-                    <p className="text-white/60 text-sm tracking-wide">Your Money. Found.</p>
+                    <p className="text-white/60 text-sm tracking-wide">Claim What's Already Yours.</p>
                 </div>
 
                 {/* Animated Icon */}
