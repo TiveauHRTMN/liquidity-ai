@@ -88,14 +88,9 @@ const Dashboard = ({
                     animate={{ opacity: 1, y: 0 }}
                     className="flex items-center justify-between mb-8"
                 >
-                    <div className="flex items-center gap-3">
-                        <img src="/logo.png" alt="Logo" className="h-9 w-auto" />
-                        <div>
-                            <h1 className="text-2xl lg:text-3xl font-bold text-white">
-                                Liquidity <span className="neon-text-gradient">AI</span>
-                            </h1>
-                            <p className="text-white/40 text-xs tracking-wide">Stop Bleeding Capital. Start Claiming Yours.</p>
-                        </div>
+                    <div className="flex items-center gap-4">
+                        <img src="/logo.png" alt="Liquidity AI" className="h-10 w-auto" />
+                        <p className="text-white/50 text-sm hidden sm:block">Your Money. Found.</p>
                     </div>
 
                     {/* Header Actions */}

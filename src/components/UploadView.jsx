@@ -49,17 +49,12 @@ const UploadView = ({ onUpload }) => {
                     transition={{ delay: 0.3 }}
                     className="text-center mb-8"
                 >
-                    <div className="flex items-center justify-center gap-3 mb-2">
-                        <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
-                        <h1 className="text-3xl font-bold text-white">
-                            Liquidity <span className="neon-text-gradient">AI</span>
-                        </h1>
-                    </div>
-                    <p className="text-white/50 text-sm mb-4 tracking-wide">
-                        Stop Bleeding Capital. Start Claiming Yours.
-                    </p>
-                    <p className="text-white/60 text-lg">
-                        Upload your financial documents to detect capital leakage
+                    <img src="/logo.png" alt="Liquidity AI" className="h-12 w-auto mx-auto mb-4" />
+                    <h2 className="text-2xl font-light text-white/90 tracking-wide mb-6">
+                        Your Money. Found.
+                    </h2>
+                    <p className="text-white/50">
+                        Upload your financial documents to uncover hidden capital
                     </p>
                 </motion.div>
 
