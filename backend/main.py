@@ -13,6 +13,7 @@ import uuid
 from datetime import datetime
 import random
 import os
+from rvo_scraper import get_subsidies, FALLBACK_SUBSIDIES
 
 app = FastAPI(
     title="Liquidity AI API",
@@ -356,6 +357,30 @@ async def list_subsidies():
         "count": len(SUBSIDY_DATABASE),
         "subsidies": SUBSIDY_DATABASE
     }
+
+
+@app.get("/api/subsidies/live")
+async def list_live_subsidies():
+    """
+    Get live subsidy data scraped from RVO.nl.
+    Returns real-time information about Dutch subsidies.
+    """
+    try:
+        subsidies = await get_subsidies()
+        return {
+            "count": len(subsidies),
+            "subsidies": subsidies,
+            "source": "RVO.nl",
+            "cached": True  # Data is cached for 1 hour
+        }
+    except Exception as e:
+        # Fallback to static data if scraping fails
+        return {
+            "count": len(FALLBACK_SUBSIDIES),
+            "subsidies": FALLBACK_SUBSIDIES,
+            "source": "fallback",
+            "error": str(e)
+        }
 
 
 @app.get("/api/subsidy/{subsidy_id}")
