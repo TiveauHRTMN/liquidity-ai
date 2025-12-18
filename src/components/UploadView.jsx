@@ -54,7 +54,7 @@ const UploadView = ({ onUpload }) => {
                         Claim What's Already Yours.
                     </h2>
                     <p className="text-white/50">
-                        Upload your financial documents to uncover hidden capital
+                        Upload uw financiële documenten om verborgen kapitaal te ontdekken
                     </p>
                 </motion.div>
 
@@ -85,13 +85,13 @@ const UploadView = ({ onUpload }) => {
                     >
                         <Upload className="w-16 h-16 text-white/40 mx-auto mb-4" />
                         <h3 className="text-xl font-semibold text-white mb-2">
-                            Drop your files here
+                            Sleep uw bestanden hier
                         </h3>
                         <p className="text-white/50">
-                            or click to browse
+                            of klik om te bladeren
                         </p>
                         <p className="text-white/30 text-sm mt-2">
-                            Supports PDF, Excel, CSV files
+                            Ondersteunt PDF, Excel, CSV bestanden
                         </p>
                     </motion.div>
                 </motion.div>
@@ -104,7 +104,7 @@ const UploadView = ({ onUpload }) => {
                         className="mt-6 space-y-2"
                     >
                         <p className="text-white/60 text-sm font-medium mb-3">
-                            Selected files ({files.length})
+                            Geselecteerde bestanden ({files.length})
                         </p>
                         {files.map((file, index) => (
                             <motion.div
@@ -136,7 +136,7 @@ const UploadView = ({ onUpload }) => {
                     className={`w-full mt-8 cta-button ${files.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
                         }`}
                 >
-                    Start AI Scan
+                    Start AI Analyse
                 </motion.button>
 
                 <motion.p
@@ -145,7 +145,7 @@ const UploadView = ({ onUpload }) => {
                     transition={{ delay: 0.6 }}
                     className="text-center text-white/30 text-sm mt-4"
                 >
-                    Your data is encrypted and processed securely
+                    Uw gegevens worden versleuteld en veilig verwerkt
                 </motion.p>
             </GlassCard>
         </div>

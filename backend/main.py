@@ -83,100 +83,142 @@ email_alerts = {}
 SUBSIDY_DATABASE = [
     {
         "id": "wbso-2024",
-        "item": "Unused R&D Tax Credits",
-        "subsidy": "WBSO Subsidy",
+        "item": "Onbenutte R&D Belastingvoordelen",
+        "subsidy": "WBSO Regeling",
         "amount": -4800,
-        "category": "Tax",
-        "description": "Tax credit for research and development activities. Reduces wage tax and social contributions for R&D employees.",
-        "deadline": "September 30, 2024",
+        "category": "Fiscaal",
+        "description": "Afdrachtvermindering voor speur- en ontwikkelingswerk. Verlaagt de loonbelasting en sociale premies voor R&D-medewerkers.",
+        "deadline": "30 september 2024",
         "eligibility": [
-            "Companies performing R&D activities",
-            "Minimum 500 R&D hours per year",
-            "Technical novelty requirement"
+            "Bedrijven met S&O-activiteiten",
+            "Minimaal 500 S&O-uren per jaar",
+            "Technisch nieuw product of proces"
         ]
     },
     {
         "id": "sde-2024",
-        "item": "Energy Efficiency Program",
-        "subsidy": "SDE++ Grant",
+        "item": "Duurzame Energie Investering",
+        "subsidy": "SDE++ Subsidie",
         "amount": -3200,
-        "category": "Energy",
-        "description": "Stimulation of Sustainable Energy Production and Climate Transition subsidy for renewable energy projects.",
-        "deadline": "Rolling applications",
+        "category": "Energie",
+        "description": "Stimuleringsregeling Duurzame Energieproductie en Klimaattransitie voor hernieuwbare energieprojecten.",
+        "deadline": "Doorlopende aanvragen",
         "eligibility": [
-            "Energy production from renewable sources",
-            "CO2 reduction projects",
-            "Minimum project size requirements"
+            "Energieproductie uit hernieuwbare bronnen",
+            "CO2-reducerende projecten",
+            "Minimale projectomvang vereist"
         ]
     },
     {
         "id": "stap-2024",
-        "item": "Employee Training Budget",
+        "item": "Opleidingsbudget Werknemers",
         "subsidy": "STAP Budget",
         "amount": -2800,
-        "category": "HR",
-        "description": "Stimulation of Labour Market Position budget for employee training and development.",
-        "deadline": "Continuous enrollment",
+        "category": "Personeel",
+        "description": "Stimulering Arbeidsmarktpositie - budget voor scholing en ontwikkeling van werknemers.",
+        "deadline": "Doorlopende inschrijving",
         "eligibility": [
-            "Dutch residents aged 18+",
-            "Registered training providers",
-            "Maximum €1,000 per person per year"
+            "Nederlandse ingezetenen 18+",
+            "Geregistreerde opleidingsaanbieders",
+            "Maximaal €1.000 per persoon per jaar"
         ]
     },
     {
         "id": "mit-2024",
-        "item": "Digital Transformation",
-        "subsidy": "MIT Scheme",
+        "item": "Digitale Transformatie",
+        "subsidy": "MIT Regeling",
         "amount": -2100,
-        "category": "Digital",
-        "description": "SME Innovation Stimulus for Regional and Top Sectors - supports innovation in SMEs.",
+        "category": "Digitaal",
+        "description": "MKB Innovatiestimulering Regio en Topsectoren - ondersteunt innovatie bij het MKB.",
         "deadline": "April 2024 / September 2024",
         "eligibility": [
-            "Small and medium enterprises (SME)",
-            "Innovation or R&D project",
-            "Collaboration with research institutions"
+            "Midden- en kleinbedrijf (MKB)",
+            "Innovatie- of R&D-project",
+            "Samenwerking met kennisinstellingen"
         ]
     },
     {
         "id": "dhi-2024",
-        "item": "Export Development",
-        "subsidy": "DHI Subsidy",
+        "item": "Export Ontwikkeling",
+        "subsidy": "DHI Subsidie",
         "amount": -1300,
         "category": "Export",
-        "description": "Demonstration Projects, Feasibility Studies and Investment Preparation for international business.",
-        "deadline": "Ongoing applications",
+        "description": "Demonstratieprojecten, Haalbaarheidsstudies en Investeringsvoorbereiding voor internationaal ondernemen.",
+        "deadline": "Doorlopende aanvragen",
         "eligibility": [
-            "Dutch companies with export ambitions",
-            "Projects in emerging markets",
-            "Demonstration or feasibility activities"
+            "Nederlandse bedrijven met exportambitie",
+            "Projecten in opkomende markten",
+            "Demonstratie- of haalbaarheidsstudies"
         ]
     },
     {
         "id": "innovatie-2024",
-        "item": "Innovation Box Benefits",
+        "item": "Innovatiebox Voordelen",
         "subsidy": "Innovatiebox",
         "amount": -1800,
-        "category": "Tax",
-        "description": "Reduced corporate tax rate (9%) for profits from innovative activities.",
-        "deadline": "Annual tax filing",
+        "category": "Fiscaal",
+        "description": "Verlaagd vennootschapsbelastingtarief (9%) voor winsten uit innovatieve activiteiten.",
+        "deadline": "Jaarlijkse belastingaangifte",
         "eligibility": [
-            "Patents or WBSO certificate",
-            "Self-developed intangible assets",
-            "Demonstrable innovation activities"
+            "Octrooien of WBSO-verklaring",
+            "Zelfontworpen immateriële activa",
+            "Aantoonbare innovatieactiviteiten"
         ]
     },
     {
-        "id": "mkb-2024",
-        "item": "SME Loan Guarantee",
+        "id": "bmkb-2024",
+        "item": "MKB Kredietgarantie",
         "subsidy": "BMKB Regeling",
         "amount": -950,
-        "category": "Finance",
-        "description": "SME Credit Guarantee Scheme - government guarantee for bank loans.",
-        "deadline": "Continuous availability",
+        "category": "Financiering",
+        "description": "Borgstelling MKB-kredieten - overheidsgarantie voor bankleningen aan MKB.",
+        "deadline": "Doorlopend beschikbaar",
         "eligibility": [
-            "SME classification",
-            "Viable business plan",
-            "Bank loan application"
+            "MKB-classificatie",
+            "Levensvatbaar ondernemingsplan",
+            "Banklening aanvraag"
+        ]
+    },
+    {
+        "id": "eia-2024",
+        "item": "Energie-Investeringsaftrek",
+        "subsidy": "EIA Regeling",
+        "amount": -2400,
+        "category": "Energie",
+        "description": "Extra fiscale aftrek voor investeringen in energiebesparende bedrijfsmiddelen en duurzame energie.",
+        "deadline": "Binnen 3 maanden na investering",
+        "eligibility": [
+            "Investering in erkende bedrijfsmiddelen",
+            "Minimaal €2.500 per bedrijfsmiddel",
+            "Opgenomen in de Energielijst"
+        ]
+    },
+    {
+        "id": "mia-vamil-2024",
+        "item": "Milieu-Investeringen",
+        "subsidy": "MIA/Vamil",
+        "amount": -1650,
+        "category": "Milieu",
+        "description": "Milieu-investeringsaftrek en willekeurige afschrijving voor milieuinvesteringen.",
+        "deadline": "Binnen 3 maanden na investering",
+        "eligibility": [
+            "Investering in milieulijst bedrijfsmiddelen",
+            "Nieuwe of eenmalige investeringen",
+            "Minimaal €2.500 per bedrijfsmiddel"
+        ]
+    },
+    {
+        "id": "tki-2024",
+        "item": "Samenwerkingsprojecten",
+        "subsidy": "TKI Toeslag",
+        "amount": -1200,
+        "category": "Innovatie",
+        "description": "Topconsortia voor Kennis en Innovatie - stimuleert publiek-private samenwerking.",
+        "deadline": "Jaarlijkse ronden",
+        "eligibility": [
+            "Samenwerking bedrijven en kennisinstellingen",
+            "Fundamenteel/industrieel onderzoek",
+            "Bijdrage aan nationale topsectoren"
         ]
     }
 ]

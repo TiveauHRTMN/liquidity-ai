@@ -98,7 +98,7 @@ const Dashboard = ({
                         {/* Backend Status Indicator */}
                         {!backendAvailable && (
                             <span className="text-yellow-400/70 text-xs px-2 py-1 rounded bg-yellow-500/10 border border-yellow-500/20">
-                                Demo Mode
+                                Demo Modus
                             </span>
                         )}
 
@@ -126,7 +126,7 @@ const Dashboard = ({
 
                         <div className="flex items-center gap-2 text-white/60">
                             <div className="pulse-dot" />
-                            <span className="text-sm font-medium hidden sm:inline">Live Analysis</span>
+                            <span className="text-sm font-medium hidden sm:inline">Live Analyse</span>
                         </div>
                     </div>
                 </motion.div>
@@ -142,7 +142,7 @@ const Dashboard = ({
                             <div className="flex items-center gap-2 mb-4">
                                 <TrendingDown className="w-5 h-5 text-red-400" />
                                 <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
-                                    Total Capital Leakage
+                                    Totaal Kapitaalverlies
                                 </span>
                             </div>
 
@@ -160,11 +160,11 @@ const Dashboard = ({
                             <div className="flex items-center gap-4 text-white/50 text-sm flex-wrap">
                                 <div className="flex items-center gap-2">
                                     <Euro className="w-4 h-4" />
-                                    <span>Per Year (Estimated)</span>
+                                    <span>Per Jaar (Geschat)</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <Target className="w-4 h-4 text-red-400" />
-                                    <span className="text-red-400">{subsidies.length} Opportunities Found</span>
+                                    <span className="text-red-400">{subsidies.length} Kansen Gevonden</span>
                                 </div>
                             </div>
 
@@ -176,7 +176,7 @@ const Dashboard = ({
                                 className="absolute top-0 right-0 px-3 py-1 rounded-full bg-red-500/20 border border-red-500/30"
                             >
                                 <span className="text-red-400 text-xs font-semibold uppercase tracking-wider">
-                                    Critical
+                                    Kritiek
                                 </span>
                             </motion.div>
                         </div>
@@ -187,7 +187,7 @@ const Dashboard = ({
                         <div className="flex items-center gap-2 mb-6">
                             <Building2 className="w-5 h-5 text-purple-400" />
                             <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
-                                Subsidy Utilization Benchmark
+                                Subsidiebenutting Benchmark
                             </span>
                         </div>
 
@@ -195,7 +195,7 @@ const Dashboard = ({
                             {/* Your Performance */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-white font-medium">Your Company</span>
+                                    <span className="text-white font-medium">Uw Bedrijf</span>
                                     <span className="text-red-400 font-bold">{benchmarkData.you}%</span>
                                 </div>
                                 <div className="progress-bar h-4">
@@ -212,7 +212,7 @@ const Dashboard = ({
                             {/* Competitors Performance */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-white font-medium">Industry Average</span>
+                                    <span className="text-white font-medium">Branchegemiddelde</span>
                                     <span className="text-green-400 font-bold">{benchmarkData.competitors}%</span>
                                 </div>
                                 <div className="progress-bar h-4">
@@ -237,10 +237,10 @@ const Dashboard = ({
                                     <AlertTriangle className="w-5 h-5 text-red-400" />
                                     <div>
                                         <p className="text-white font-medium">
-                                            You're leaving <span className="text-red-400 font-bold">{gapPercentage}%</span> on the table
+                                            U laat <span className="text-red-400 font-bold">{gapPercentage}%</span> liggen
                                         </p>
                                         <p className="text-white/50 text-sm">
-                                            Compared to industry competitors
+                                            Vergeleken met branchegenoten
                                         </p>
                                     </div>
                                 </div>
@@ -255,11 +255,11 @@ const Dashboard = ({
                         <div className="flex items-center gap-2">
                             <Zap className="w-5 h-5 text-yellow-400" />
                             <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
-                                Detected Opportunities
+                                Gevonden Kansen
                             </span>
                         </div>
                         <span className="text-white/40 text-sm">
-                            Click row for details
+                            Klik op rij voor details
                         </span>
                     </div>
 
@@ -269,13 +269,13 @@ const Dashboard = ({
                             <thead>
                                 <tr className="border-b border-white/10">
                                     <th className="text-left text-white/40 font-medium text-sm pb-4 pr-4">
-                                        Detected Item
+                                        Gedetecteerd Item
                                     </th>
                                     <th className="text-left text-white/40 font-medium text-sm pb-4 pr-4">
-                                        Subsidy Name
+                                        Subsidienaam
                                     </th>
                                     <th className="text-right text-white/40 font-medium text-sm pb-4">
-                                        Potential Amount
+                                        Potentiël Bedrag
                                     </th>
                                 </tr>
                             </thead>
@@ -327,10 +327,10 @@ const Dashboard = ({
                 >
                     <div>
                         <h3 className="text-xl font-bold text-white mb-1">
-                            Ready to recover your capital?
+                            Klaar om uw kapitaal terug te halen?
                         </h3>
                         <p className="text-white/50">
-                            Our experts will help you claim these subsidies
+                            Onze experts helpen u deze subsidies te claimen
                         </p>
                     </div>
 
@@ -350,7 +350,7 @@ const Dashboard = ({
                             whileTap={{ scale: 0.95 }}
                             className="cta-button flex items-center gap-3 whitespace-nowrap"
                         >
-                            <span>RECOVER FUNDS</span>
+                            <span>HERSTEL FONDSEN</span>
                             <ArrowRight className="w-5 h-5" />
                         </motion.button>
                     </div>
@@ -363,9 +363,9 @@ const Dashboard = ({
                     transition={{ delay: 1 }}
                     className="text-center text-white/30 text-sm mt-8"
                 >
-                    Analysis based on uploaded documents • {data?.analyzedAt
-                        ? `Analyzed: ${new Date(data.analyzedAt).toLocaleString()}`
-                        : 'Last updated: just now'
+                    Analyse gebaseerd op geüploade documenten • {data?.analyzedAt
+                        ? `Geanalyseerd: ${new Date(data.analyzedAt).toLocaleString('nl-NL')}`
+                        : 'Laatst bijgewerkt: zojuist'
                     }
                 </motion.p>
             </div>

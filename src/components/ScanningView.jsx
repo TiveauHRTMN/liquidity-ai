@@ -13,10 +13,10 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
     const [stage, setStage] = useState(0);
 
     const stages = [
-        { icon: FileSearch, label: 'Analyzing documents...', color: 'text-blue-400' },
-        { icon: Brain, label: 'Running AI detection...', color: 'text-purple-400' },
-        { icon: Scan, label: 'Scanning for subsidies...', color: 'text-green-400' },
-        { icon: AlertCircle, label: 'Calculating losses...', color: 'text-red-400' },
+        { icon: FileSearch, label: 'Documenten analyseren...', color: 'text-blue-400' },
+        { icon: Brain, label: 'AI detectie uitvoeren...', color: 'text-purple-400' },
+        { icon: Scan, label: 'Subsidies zoeken...', color: 'text-green-400' },
+        { icon: AlertCircle, label: 'Verliezen berekenen...', color: 'text-red-400' },
     ];
 
     useEffect(() => {
@@ -117,7 +117,7 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
                         animate={{ opacity: 1 }}
                         className="text-green-400/60 text-sm mt-6"
                     >
-                        ✓ Data received from server
+                        ✓ Data ontvangen van server
                     </motion.p>
                 )}
 
