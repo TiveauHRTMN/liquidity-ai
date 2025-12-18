@@ -47,6 +47,17 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
             <GlassCard className="w-full max-w-lg p-8 text-center">
+                {/* Header with Logo */}
+                <div className="flex items-center justify-center gap-3 mb-6">
+                    <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+                    <div className="text-left">
+                        <h1 className="text-xl font-bold text-white">
+                            Liquidity <span className="neon-text-gradient">AI</span>
+                        </h1>
+                        <p className="text-white/40 text-xs">Stop Bleeding Capital. Start Claiming Yours.</p>
+                    </div>
+                </div>
+
                 {/* Animated Icon */}
                 <motion.div
                     key={stage}

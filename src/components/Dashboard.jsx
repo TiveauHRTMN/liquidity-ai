@@ -89,10 +89,13 @@ const Dashboard = ({
                     className="flex items-center justify-between mb-8"
                 >
                     <div className="flex items-center gap-3">
-                        <AlertTriangle className="w-8 h-8 text-red-400" />
-                        <h1 className="text-2xl lg:text-3xl font-bold text-white">
-                            Liquidity <span className="neon-text-gradient">AI</span>
-                        </h1>
+                        <img src="/logo.png" alt="Logo" className="h-9 w-auto" />
+                        <div>
+                            <h1 className="text-2xl lg:text-3xl font-bold text-white">
+                                Liquidity <span className="neon-text-gradient">AI</span>
+                            </h1>
+                            <p className="text-white/40 text-xs tracking-wide">Stop Bleeding Capital. Start Claiming Yours.</p>
+                        </div>
                     </div>
 
                     {/* Header Actions */}
