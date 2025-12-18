@@ -1,10 +1,11 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import UploadView from './components/UploadView';
 import ScanningView from './components/ScanningView';
 import Dashboard from './components/Dashboard';
 import EmailAlertModal from './components/EmailAlertModal';
 import SubsidyDetailModal from './components/SubsidyDetailModal';
+import ThemeToggle from './components/ThemeToggle';
 import api from './services/api';
 
 /**
@@ -24,6 +25,23 @@ function App() {
     const [showEmailModal, setShowEmailModal] = useState(false);
     const [showSubsidyModal, setShowSubsidyModal] = useState(false);
     const [selectedSubsidy, setSelectedSubsidy] = useState(null);
+
+    // Theme state
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const saved = localStorage.getItem('theme');
+        return saved ? saved === 'dark' : true; // Default to dark
+    });
+
+    // Apply theme on mount and change
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', isDarkMode ? 'dark' : 'light');
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    }, [isDarkMode]);
+
+    // Toggle theme
+    const toggleTheme = useCallback(() => {
+        setIsDarkMode(prev => !prev);
+    }, []);
 
     // Handle file upload
     const handleUpload = useCallback(async (files) => {
@@ -99,6 +117,11 @@ function App() {
 
             {/* Main Content */}
             <div className="relative z-10">
+                {/* Theme Toggle - Fixed Position */}
+                <div className="fixed top-4 right-4 z-50">
+                    <ThemeToggle isDark={isDarkMode} onToggle={toggleTheme} />
+                </div>
+
                 <AnimatePresence mode="wait">
                     {appState === 'upload' && (
                         <motion.div
