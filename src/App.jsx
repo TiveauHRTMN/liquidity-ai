@@ -29,7 +29,7 @@ function App() {
     // Theme state
     const [isDarkMode, setIsDarkMode] = useState(() => {
         const saved = localStorage.getItem('theme');
-        return saved ? saved === 'dark' : true; // Default to dark
+        return saved ? saved === 'dark' : false; // Default to LIGHT
     });
 
     // Apply theme on mount and change

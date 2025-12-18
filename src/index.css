@@ -76,37 +76,38 @@ body {
 .orb-1 {
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(239, 68, 68, 0.25) 0%, transparent 70%);
     top: -200px;
     left: -200px;
-    animation: float 20s ease-in-out infinite;
 }
 
 .orb-2 {
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(100, 116, 139, 0.4) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(100, 116, 139, 0.2) 0%, transparent 70%);
     top: 50%;
     right: -150px;
-    animation: float 25s ease-in-out infinite reverse;
 }
 
 .orb-3 {
     width: 450px;
     height: 450px;
-    background: radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.2) 0%, transparent 70%);
     bottom: -100px;
     left: 30%;
-    animation: floatAlt 22s ease-in-out infinite;
 }
 
 .orb-4 {
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(148, 163, 184, 0.15) 0%, transparent 70%);
     top: 40%;
     left: 20%;
-    animation: float 28s ease-in-out infinite;
+}
+
+/* Logo styling for light mode */
+[data-theme="light"] img[alt="Liquidity AI"] {
+    filter: brightness(0) saturate(100%);
 }
 
 /* Keyframes for orb animations */
@@ -229,15 +230,9 @@ body {
     }
 }
 
-/* Scan Line Effect */
+/* Scan Line Effect - Hidden for cleaner UI */
 .scan-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.5), transparent);
-    animation: scanLine 3s linear infinite;
+    display: none;
 }
 
 @keyframes scanLine {
