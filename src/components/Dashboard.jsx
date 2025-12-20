@@ -24,7 +24,8 @@ const Dashboard = ({
     data = null,
     onSubsidyClick = () => { },
     onEmailAlert = () => { },
-    backendAvailable = true
+    backendAvailable = true,
+    isDarkMode = false
 }) => {
     // Use API data or fallback to defaults
     const totalLeakage = data?.totalLeakage ?? -14200;
@@ -89,8 +90,12 @@ const Dashboard = ({
                     className="flex items-center justify-between mb-8"
                 >
                     <div className="flex items-center gap-4">
-                        <img src="/logo.png" alt="Liquidity AI" className="h-10 w-auto" />
-                        <p className="text-white/50 text-sm hidden sm:block">Claim What's Already Yours.</p>
+                        <h1 className="text-xl font-semibold" style={{ color: 'var(--text-primary)' }}>
+                            Dashboard
+                        </h1>
+                        <p className="text-sm hidden sm:block" style={{ color: 'var(--text-muted)' }}>
+                            Claim What's Already Yours.
+                        </p>
                     </div>
 
                     {/* Header Actions */}
@@ -124,7 +129,7 @@ const Dashboard = ({
                             </motion.button>
                         </div>
 
-                        <div className="flex items-center gap-2 text-white/60">
+                        <div className="flex items-center gap-2" style={{ color: 'var(--text-secondary)' }}>
                             <div className="pulse-dot" />
                             <span className="text-sm font-medium hidden sm:inline">Live Analyse</span>
                         </div>
@@ -141,7 +146,7 @@ const Dashboard = ({
 
                             <div className="flex items-center gap-2 mb-4">
                                 <TrendingDown className="w-5 h-5 text-red-400" />
-                                <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
+                                <span className="font-medium uppercase tracking-wider text-sm" style={{ color: 'var(--text-secondary)' }}>
                                     Totaal Kapitaalverlies
                                 </span>
                             </div>
@@ -157,7 +162,7 @@ const Dashboard = ({
                                 </span>
                             </motion.div>
 
-                            <div className="flex items-center gap-4 text-white/50 text-sm flex-wrap">
+                            <div className="flex items-center gap-4 text-sm flex-wrap" style={{ color: 'var(--text-muted)' }}>
                                 <div className="flex items-center gap-2">
                                     <Euro className="w-4 h-4" />
                                     <span>Per Jaar (Geschat)</span>
@@ -186,7 +191,7 @@ const Dashboard = ({
                     <GlassCard className="p-8" delay={0.2}>
                         <div className="flex items-center gap-2 mb-6">
                             <Building2 className="w-5 h-5 text-purple-400" />
-                            <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
+                            <span className="font-medium uppercase tracking-wider text-sm" style={{ color: 'var(--text-secondary)' }}>
                                 Subsidiebenutting Benchmark
                             </span>
                         </div>
@@ -195,7 +200,7 @@ const Dashboard = ({
                             {/* Your Performance */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-white font-medium">Uw Bedrijf</span>
+                                    <span className="font-medium" style={{ color: 'var(--text-primary)' }}>Uw Bedrijf</span>
                                     <span className="text-red-400 font-bold">{benchmarkData.you}%</span>
                                 </div>
                                 <div className="progress-bar h-4">
@@ -212,16 +217,19 @@ const Dashboard = ({
                             {/* Competitors Performance */}
                             <div>
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-white font-medium">Branchegemiddelde</span>
-                                    <span className="text-green-400 font-bold">{benchmarkData.competitors}%</span>
+                                    <span className="font-medium" style={{ color: 'var(--text-primary)' }}>Branchegemiddelde</span>
+                                    <span className="font-bold" style={{ color: 'var(--trust-blue)' }}>{benchmarkData.competitors}%</span>
                                 </div>
                                 <div className="progress-bar h-4">
                                     <motion.div
                                         initial={{ width: 0 }}
                                         animate={{ width: `${benchmarkData.competitors}%` }}
                                         transition={{ delay: 0.7, duration: 1, ease: 'easeOut' }}
-                                        className="progress-bar-fill bg-gradient-to-r from-green-500 to-emerald-400"
-                                        style={{ boxShadow: '0 0 15px rgba(34, 197, 94, 0.4)' }}
+                                        className="progress-bar-fill"
+                                        style={{
+                                            background: 'linear-gradient(to right, var(--trust-blue), var(--trust-blue-light))',
+                                            boxShadow: '0 0 15px var(--trust-blue-glow)'
+                                        }}
                                     />
                                 </div>
                             </div>
@@ -236,10 +244,10 @@ const Dashboard = ({
                                 <div className="flex items-center gap-3">
                                     <AlertTriangle className="w-5 h-5 text-red-400" />
                                     <div>
-                                        <p className="text-white font-medium">
+                                        <p className="font-medium" style={{ color: 'var(--text-primary)' }}>
                                             U laat <span className="text-red-400 font-bold">{gapPercentage}%</span> liggen
                                         </p>
-                                        <p className="text-white/50 text-sm">
+                                        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
                                             Vergeleken met branchegenoten
                                         </p>
                                     </div>
@@ -254,11 +262,11 @@ const Dashboard = ({
                     <div className="flex items-center justify-between mb-6">
                         <div className="flex items-center gap-2">
                             <Zap className="w-5 h-5 text-yellow-400" />
-                            <span className="text-white/60 font-medium uppercase tracking-wider text-sm">
+                            <span className="font-medium uppercase tracking-wider text-sm" style={{ color: 'var(--text-secondary)' }}>
                                 Gevonden Kansen
                             </span>
                         </div>
-                        <span className="text-white/40 text-sm">
+                        <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
                             Klik op rij voor details
                         </span>
                     </div>
@@ -267,14 +275,14 @@ const Dashboard = ({
                     <div className="overflow-x-auto">
                         <table className="w-full">
                             <thead>
-                                <tr className="border-b border-white/10">
-                                    <th className="text-left text-white/40 font-medium text-sm pb-4 pr-4">
+                                <tr style={{ borderBottom: '1px solid var(--glass-border)' }}>
+                                    <th className="text-left font-medium text-sm pb-4 pr-4" style={{ color: 'var(--text-muted)' }}>
                                         Gedetecteerd Item
                                     </th>
-                                    <th className="text-left text-white/40 font-medium text-sm pb-4 pr-4">
+                                    <th className="text-left font-medium text-sm pb-4 pr-4" style={{ color: 'var(--text-muted)' }}>
                                         Subsidienaam
                                     </th>
-                                    <th className="text-right text-white/40 font-medium text-sm pb-4">
+                                    <th className="text-right font-medium text-sm pb-4" style={{ color: 'var(--text-muted)' }}>
                                         Potentiël Bedrag
                                     </th>
                                 </tr>
@@ -293,16 +301,16 @@ const Dashboard = ({
                                         >
                                             <td className="py-4 pr-4">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
-                                                        <CategoryIcon className="w-4 h-4 text-white/60" />
+                                                    <div className="p-2 rounded-lg transition-colors" style={{ background: 'var(--glass-border)' }}>
+                                                        <CategoryIcon className="w-4 h-4" style={{ color: 'var(--text-secondary)' }} />
                                                     </div>
-                                                    <span className="text-white font-medium">{item.item}</span>
+                                                    <span className="font-medium" style={{ color: 'var(--text-primary)' }}>{item.item}</span>
                                                 </div>
                                             </td>
                                             <td className="py-4 pr-4">
                                                 <div className="flex items-center gap-2">
-                                                    <span className="text-white/70">{item.subsidy}</span>
-                                                    <ChevronRight className="w-4 h-4 text-white/30 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                    <span style={{ color: 'var(--text-secondary)' }}>{item.subsidy}</span>
+                                                    <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--text-muted)' }} />
                                                 </div>
                                             </td>
                                             <td className="py-4 text-right">
@@ -326,10 +334,10 @@ const Dashboard = ({
                     className="flex flex-col sm:flex-row items-center justify-between gap-4 glass-card p-6"
                 >
                     <div>
-                        <h3 className="text-xl font-bold text-white mb-1">
+                        <h3 className="text-xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>
                             Klaar om uw kapitaal terug te halen?
                         </h3>
-                        <p className="text-white/50">
+                        <p style={{ color: 'var(--text-secondary)' }}>
                             Onze experts helpen u deze subsidies te claimen
                         </p>
                     </div>
@@ -361,7 +369,8 @@ const Dashboard = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1 }}
-                    className="text-center text-white/30 text-sm mt-8"
+                    className="text-center text-sm mt-8"
+                    style={{ color: 'var(--text-muted)' }}
                 >
                     Analyse gebaseerd op geüploade documenten • {data?.analyzedAt
                         ? `Geanalyseerd: ${new Date(data.analyzedAt).toLocaleString('nl-NL')}`

@@ -1,11 +1,13 @@
 import { useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import LandingPage from './components/LandingPage';
 import UploadView from './components/UploadView';
 import ScanningView from './components/ScanningView';
 import Dashboard from './components/Dashboard';
 import EmailAlertModal from './components/EmailAlertModal';
 import SubsidyDetailModal from './components/SubsidyDetailModal';
 import ThemeToggle from './components/ThemeToggle';
+import Header from './components/Header';
 import api from './services/api';
 
 /**
@@ -14,6 +16,9 @@ import api from './services/api';
  * Handles API integration and modal states
  */
 function App() {
+    // Landing page visibility state
+    const [showLanding, setShowLanding] = useState(true);
+
     // Application states: 'upload' | 'scanning' | 'dashboard'
     const [appState, setAppState] = useState('upload');
     const [sessionId, setSessionId] = useState(null);
@@ -89,6 +94,19 @@ function App() {
         setShowEmailModal(true);
     }, []);
 
+    // Handle start analysis from landing page
+    const handleStartAnalysis = useCallback(() => {
+        setShowLanding(false);
+        setAppState('upload');
+    }, []);
+
+    // Handle logo click to return to landing
+    const handleLogoClick = useCallback(() => {
+        setShowLanding(true);
+        setAppState('upload');
+        setAnalysisResult(null);
+    }, []);
+
     // Mock data for when backend is unavailable
     const getMockData = () => ({
         sessionId: 'mock-session',
@@ -117,55 +135,79 @@ function App() {
 
             {/* Main Content */}
             <div className="relative z-10">
-                {/* Theme Toggle - Fixed Position */}
-                <div className="fixed top-4 right-4 z-50">
-                    <ThemeToggle isDark={isDarkMode} onToggle={toggleTheme} />
+                {/* Global Header with Navigation */}
+                <Header
+                    isDarkMode={isDarkMode}
+                    onThemeToggle={toggleTheme}
+                    onLogoClick={handleLogoClick}
+                    onStartAnalysis={handleStartAnalysis}
+                    ThemeToggleComponent={<ThemeToggle isDark={isDarkMode} onToggle={toggleTheme} />}
+                />
+
+                {/* Content with header offset */}
+                <div className={showLanding ? '' : 'pt-24'}>
+                    <AnimatePresence mode="wait">
+                        {showLanding ? (
+                            <motion.div
+                                key="landing"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <LandingPage isDarkMode={isDarkMode} onStartAnalysis={handleStartAnalysis} />
+                            </motion.div>
+                        ) : (
+                            <>
+                                {appState === 'upload' && (
+                                    <motion.div
+                                        key="upload"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <UploadView onUpload={handleUpload} isDarkMode={isDarkMode} />
+                                    </motion.div>
+                                )}
+
+                                {appState === 'scanning' && (
+                                    <motion.div
+                                        key="scanning"
+                                        initial={{ opacity: 0, scale: 1.05 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.95 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <ScanningView
+                                            onComplete={handleScanComplete}
+                                            analysisResult={analysisResult}
+                                            isDarkMode={isDarkMode}
+                                        />
+                                    </motion.div>
+                                )}
+
+                                {appState === 'dashboard' && (
+                                    <motion.div
+                                        key="dashboard"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.4 }}
+                                    >
+                                        <Dashboard
+                                            data={analysisResult}
+                                            onSubsidyClick={handleSubsidyClick}
+                                            onEmailAlert={handleEmailAlert}
+                                            backendAvailable={backendAvailable}
+                                            isDarkMode={isDarkMode}
+                                        />
+                                    </motion.div>
+                                )}
+                            </>
+                        )}
+                    </AnimatePresence>
                 </div>
-
-                <AnimatePresence mode="wait">
-                    {appState === 'upload' && (
-                        <motion.div
-                            key="upload"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <UploadView onUpload={handleUpload} />
-                        </motion.div>
-                    )}
-
-                    {appState === 'scanning' && (
-                        <motion.div
-                            key="scanning"
-                            initial={{ opacity: 0, scale: 1.05 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <ScanningView
-                                onComplete={handleScanComplete}
-                                analysisResult={analysisResult}
-                            />
-                        </motion.div>
-                    )}
-
-                    {appState === 'dashboard' && (
-                        <motion.div
-                            key="dashboard"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            <Dashboard
-                                data={analysisResult}
-                                onSubsidyClick={handleSubsidyClick}
-                                onEmailAlert={handleEmailAlert}
-                                backendAvailable={backendAvailable}
-                            />
-                        </motion.div>
-                    )}
-                </AnimatePresence>
             </div>
 
             {/* Email Alert Modal */}

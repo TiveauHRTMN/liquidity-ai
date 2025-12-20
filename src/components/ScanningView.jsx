@@ -8,7 +8,7 @@ import { Scan, FileSearch, Brain, AlertCircle } from 'lucide-react';
  * Shows AI processing simulation with progress stages
  * Now integrates with actual analysis completion
  */
-const ScanningView = ({ onComplete, analysisResult = null }) => {
+const ScanningView = ({ onComplete, analysisResult = null, isDarkMode = false }) => {
     const [progress, setProgress] = useState(0);
     const [stage, setStage] = useState(0);
 
@@ -47,10 +47,9 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
     return (
         <div className="min-h-screen flex items-center justify-center p-8">
             <GlassCard className="w-full max-w-lg p-8 text-center">
-                {/* Header with Logo */}
+                {/* Header */}
                 <div className="mb-6">
-                    <img src="/logo.png" alt="Liquidity AI" className="h-10 w-auto mx-auto mb-3" />
-                    <p className="text-white/60 text-sm tracking-wide">Claim What's Already Yours.</p>
+                    <p className="text-sm tracking-wide" style={{ color: 'var(--text-secondary)' }}>AI Scanning in Progress...</p>
                 </div>
 
                 {/* Animated Icon */}
@@ -71,7 +70,8 @@ const ScanningView = ({ onComplete, analysisResult = null }) => {
                     key={`label-${stage}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-2xl font-bold text-white mb-2"
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: 'var(--text-primary)' }}
                 >
                     {stages[stage].label}
                 </motion.h2>

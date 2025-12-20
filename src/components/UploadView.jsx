@@ -7,7 +7,7 @@ import GlassCard from './GlassCard';
  * UploadView - File upload interface with glassmorphism styling
  * Handles drag & drop and file selection for financial documents
  */
-const UploadView = ({ onUpload }) => {
+const UploadView = ({ onUpload, isDarkMode = false }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [files, setFiles] = useState([]);
 
@@ -47,13 +47,12 @@ const UploadView = ({ onUpload }) => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-center mb-8"
+                    className="text-center mb-10"
                 >
-                    <img src="/logo.png" alt="Liquidity AI" className="h-12 w-auto mx-auto mb-4" />
-                    <h2 className="text-2xl font-light text-white/90 tracking-wide mb-6">
+                    <h2 className="text-3xl font-semibold tracking-tight mb-3" style={{ color: 'var(--text-tagline)' }}>
                         Claim What's Already Yours.
                     </h2>
-                    <p className="text-white/50">
+                    <p style={{ color: 'var(--text-secondary)' }}>
                         Upload uw financiële documenten om verborgen kapitaal te ontdekken
                     </p>
                 </motion.div>
@@ -63,8 +62,13 @@ const UploadView = ({ onUpload }) => {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.4 }}
-                    className={`upload-zone p-12 text-center cursor-pointer ${isDragging ? 'drag-active' : ''
+                    className={`relative p-14 text-center cursor-pointer rounded-2xl border-2 border-dashed transition-all duration-300 ${isDragging
+                        ? 'border-purple-400 bg-purple-500/10'
+                        : 'border-[var(--glass-border)] hover:border-[var(--accent-secondary)] hover:bg-[var(--glass-border)]'
                         }`}
+                    style={{
+                        background: isDragging ? 'rgba(139, 92, 246, 0.05)' : 'transparent'
+                    }}
                     onDragOver={handleDragOver}
                     onDragLeave={handleDragLeave}
                     onDrop={handleDrop}
@@ -80,17 +84,24 @@ const UploadView = ({ onUpload }) => {
                     />
 
                     <motion.div
-                        animate={{ y: isDragging ? -10 : 0 }}
-                        transition={{ duration: 0.2 }}
+                        animate={{
+                            y: isDragging ? -10 : 0,
+                            scale: isDragging ? 1.05 : 1
+                        }}
+                        transition={{ duration: 0.2, type: 'spring', stiffness: 300 }}
                     >
-                        <Upload className="w-16 h-16 text-white/40 mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold text-white mb-2">
+                        <div className={`w-16 h-16 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragging ? 'bg-red-500/20' : 'bg-[var(--glass-border)]'
+                            }`}>
+                            <Upload className={`w-8 h-8 transition-colors duration-300 ${isDragging ? 'text-red-400' : ''
+                                }`} style={{ color: isDragging ? undefined : 'var(--text-muted)' }} />
+                        </div>
+                        <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
                             Sleep uw bestanden hier
                         </h3>
-                        <p className="text-white/50">
+                        <p style={{ color: 'var(--text-secondary)' }}>
                             of klik om te bladeren
                         </p>
-                        <p className="text-white/30 text-sm mt-2">
+                        <p className="text-sm mt-3" style={{ color: 'var(--text-muted)' }}>
                             Ondersteunt PDF, Excel, CSV bestanden
                         </p>
                     </motion.div>
@@ -101,9 +112,9 @@ const UploadView = ({ onUpload }) => {
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        className="mt-6 space-y-2"
+                        className="mt-8 space-y-3"
                     >
-                        <p className="text-white/60 text-sm font-medium mb-3">
+                        <p className="text-sm font-medium mb-3" style={{ color: 'var(--text-secondary)' }}>
                             Geselecteerde bestanden ({files.length})
                         </p>
                         {files.map((file, index) => (
@@ -112,11 +123,17 @@ const UploadView = ({ onUpload }) => {
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="flex items-center gap-3 p-3 rounded-lg bg-white/5"
+                                className="flex items-center gap-3 p-4 rounded-xl transition-all duration-300 hover:scale-[1.02]"
+                                style={{
+                                    background: 'var(--glass-border)',
+                                    border: '1px solid var(--glass-border)'
+                                }}
                             >
-                                <FileText className="w-5 h-5 text-red-400" />
-                                <span className="text-white/80 flex-1 truncate">{file.name}</span>
-                                <span className="text-white/40 text-sm">
+                                <div className="p-2 rounded-lg bg-red-500/10">
+                                    <FileText className="w-5 h-5 text-red-400" />
+                                </div>
+                                <span className="flex-1 truncate font-medium" style={{ color: 'var(--text-primary)' }}>{file.name}</span>
+                                <span className="text-sm" style={{ color: 'var(--text-muted)' }}>
                                     {(file.size / 1024).toFixed(1)} KB
                                 </span>
                             </motion.div>
@@ -129,23 +146,31 @@ const UploadView = ({ onUpload }) => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    whileHover={{ scale: files.length > 0 ? 1.02 : 1 }}
+                    whileTap={{ scale: files.length > 0 ? 0.98 : 1 }}
                     onClick={handleStartScan}
                     disabled={files.length === 0}
-                    className={`w-full mt-8 cta-button ${files.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
+                    className={`w-full mt-10 cta-button text-lg ${files.length === 0 ? 'opacity-40 cursor-not-allowed' : ''
                         }`}
                 >
-                    Start AI Analyse
+                    🚀 Start AI Analyse
                 </motion.button>
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="text-center text-white/30 text-sm mt-4"
+                    className="text-center text-sm mt-5 flex items-center justify-center gap-2"
+                    style={{ color: 'var(--text-muted)' }}
                 >
-                    Uw gegevens worden versleuteld en veilig verwerkt
+                    <span
+                        className="inline-block w-2 h-2 rounded-full animate-pulse"
+                        style={{
+                            backgroundColor: 'var(--trust-blue)',
+                            boxShadow: '0 0 8px var(--trust-blue-glow)'
+                        }}
+                    ></span>
+                    🔒 Uw gegevens worden versleuteld en veilig verwerkt
                 </motion.p>
             </GlassCard>
         </div>
